@@ -1,0 +1,211 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Product Sans", "Avenir Roman";
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.grid {
+  display: grid;
+}
+
+.flex {
+  display: flex;
+}
+
+.bottom-round-corner {
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -10;
+  width: 100vw;
+  height: 100vh;
+  background-position: 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // background-image: linear-gradient(120deg, #0a0a0d8c, #0a0a0d8c), url("/img/DALL·E\ 2022-12-31\ 17.48.37\ -\ landscape\ render\ of\ a\ gold\ comet\ falling\ from\ space\ on\ earth.png");
+  background-image: linear-gradient(120deg, #0a0a0d8c, #0a0a0d8c), url("../img/DALL·E\ 2022-12-31\ 17.49.12\ -\ landscape\ render\ of\ a\ gold\ comet\ falling\ from\ space\ on\ earth.png");
+}
+
+nav {
+  padding: 20px;
+  background-color: #1e1e1e;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+
+  .brand {
+    .logo {
+      display: block;
+      max-width: 100px;
+      min-width: 100px;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .menu {
+      display: none;
+    }
+  }
+
+  .options {
+    a {
+      padding: 10px;
+      color: #ccc;
+      font-family: "Product Sans";
+    }
+  }
+}
+
+.hero {
+  font-family: "Product Sans";
+  padding: 200px 20px;
+  text-align: center;
+  color: #ccc;
+
+  h1 {
+    font-size: 5rem;
+  }
+}
+
+
+section {
+  &.dark {
+    background-color: #0a0a0d;
+    color: #ccc;
+    text-align: center;
+    margin: 15vh 5vw;
+    border-radius: 40px;
+
+    &.bottom-round-corner {
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+
+    p {
+      padding: 20px 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      text-transform: uppercase;
+    }
+
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 50px 5%;
+      align-items: center;
+      gap: 20px;
+
+      .col {
+        img {
+          width: 100%;
+          border-radius: 20px;
+        }
+      }
+    }
+
+    &.download {
+      padding: 20px 20px 30px;
+      h2{
+        padding: 20px 0;
+      }
+      .flex {
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        a{
+          display: block;
+          padding: 20px;
+          svg{
+            path{
+              fill: #fec409;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.subscribe {
+    form {
+      input {
+        margin: 0;
+        width: 500px;
+        min-width: 100px;
+        padding: 20px 10px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        font-size: 16px;
+        border: white solid 1px;
+      }
+
+      button {
+        font-size: 16px;
+        background-color: #1e1e1e;
+        padding: 20px;
+        margin: 0;
+        color: #ccc;
+        border: #1e1e1e 1px solid;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+
+      }
+    }
+  }
+
+
+}
+
+footer {
+
+  padding: 60px 30px;
+  background-color: #0a0a0d;
+  color: #ccc;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+
+  ul,
+  ol {
+    list-style: none;
+    list-style-type: none;
+    list-style-image: none;
+
+    li {
+      padding: 10px 0px;
+    }
+  }
+
+  &.grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
