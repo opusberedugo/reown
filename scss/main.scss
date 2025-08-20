@@ -4,6 +4,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Quicksand:wght@300..700&family=Varela+Round&display=swap');
 
+@mixin media-max($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
 // Available font families:
 // font-family: "Quicksand", sans-serif;
 // font-family: "Nunito Sans", sans-serif;
@@ -379,25 +385,15 @@ section {
 // ==============================================
 
 footer {
-  padding: 60px 30px;
+  padding: 60px 40px;
   background-color: $dark-bg;
   color: $off-white;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-
-  ul,
-  ol {
-    list-style: none;
-    list-style-type: none;
-    list-style-image: none;
-
-    li {
-      padding: 10px 0;
-    }
-  }
-
-  &.grid {
-    grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  min-width: 100vw;
+  div:nth-of-type(2){
+    margin-left: auto;
   }
 }
 

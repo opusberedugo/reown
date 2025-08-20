@@ -277,24 +277,16 @@ section.subscribe form button {
 }
 
 footer {
-  padding: 60px 30px;
+  padding: 60px 40px;
   background-color: #0a0a0d;
   color: #ccc;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
+  display: flex;
+  min-width: 100vw;
 }
-footer ul,
-footer ol {
-  list-style: none;
-  list-style-type: none;
-  list-style-image: none;
-}
-footer ul li,
-footer ol li {
-  padding: 10px 0;
-}
-footer.grid {
-  grid-template-columns: repeat(4, 1fr);
+footer div:nth-of-type(2) {
+  margin-left: auto;
 }
 
 h2#sub {
