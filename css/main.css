@@ -1,22 +1,15 @@
-@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Quicksand:wght@300..700&family=Varela+Round&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: "Product Sans", "Avenir Roman";
+  font-family: "Varela Round", "Asap", "Nunito Sans", "Quicksand", "Avenir Roman";
   outline: none;
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-a {
-  color: inherit;
-}
-a:hover {
-  text-decoration: underline;
 }
 
 .grid {
@@ -32,19 +25,145 @@ a:hover {
   border-bottom-right-radius: 40px;
 }
 
+@keyframes move {
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}
+@keyframes moveGlow {
+  0% {
+    background-position: 20% 20%, 80% 30%, 50% 80%;
+  }
+  50% {
+    background-position: 40% 40%, 60% 50%, 70% 70%;
+  }
+  100% {
+    background-position: 30% 60%, 50% 40%, 60% 90%;
+  }
+}
 .background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #2f0863;
+  overflow: hidden;
+  z-index: -1;
+}
+.background span {
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50vmin;
+  backface-visibility: hidden;
+  position: absolute;
+  animation: move linear infinite;
+  animation-duration: 45s;
+}
+.background span:nth-child(0) {
+  color: #253e56;
+  top: 87%;
+  left: 64%;
+  animation-duration: 40s;
+  animation-delay: -43s;
+  transform-origin: -11vw 8vh;
+  box-shadow: 100vmin 0 12.8125489633vmin currentColor;
+}
+.background span:nth-child(1) {
+  color: #292877;
+  top: 25%;
+  left: 51%;
+  animation-duration: 22s;
+  animation-delay: -50s;
+  transform-origin: -22vw 2vh;
+  box-shadow: 100vmin 0 13.0330541192vmin currentColor;
+}
+.background span:nth-child(2) {
+  color: #253e56;
+  top: 48%;
+  left: 48%;
+  animation-duration: 31s;
+  animation-delay: -43s;
+  transform-origin: -1vw -11vh;
+  box-shadow: -100vmin 0 13.1347052565vmin currentColor;
+}
+.background span:nth-child(3) {
+  color: #292877;
+  top: 13%;
+  left: 76%;
+  animation-duration: 29s;
+  animation-delay: -29s;
+  transform-origin: -21vw 7vh;
+  box-shadow: -100vmin 0 13.089721101vmin currentColor;
+}
+.background span:nth-child(4) {
+  color: #292877;
+  top: 6%;
+  left: 50%;
+  animation-duration: 12s;
+  animation-delay: -5s;
+  transform-origin: 24vw -5vh;
+  box-shadow: -100vmin 0 13.4733157605vmin currentColor;
+}
+.background span:nth-child(5) {
+  color: #292877;
+  top: 93%;
+  left: 45%;
+  animation-duration: 40s;
+  animation-delay: -44s;
+  transform-origin: 1vw -18vh;
+  box-shadow: 100vmin 0 13.1655382165vmin currentColor;
+}
+.background span:nth-child(6) {
+  color: #292877;
+  top: 74%;
+  left: 10%;
+  animation-duration: 33s;
+  animation-delay: -23s;
+  transform-origin: 1vw 3vh;
+  box-shadow: 100vmin 0 12.7819891298vmin currentColor;
+}
+.background span:nth-child(7) {
+  color: #253e56;
+  top: 84%;
+  left: 47%;
+  animation-duration: 29s;
+  animation-delay: -27s;
+  transform-origin: 3vw 24vh;
+  box-shadow: 100vmin 0 12.8613619959vmin currentColor;
+}
+.background span:nth-child(8) {
+  color: #292877;
+  top: 47%;
+  left: 16%;
+  animation-duration: 19s;
+  animation-delay: -32s;
+  transform-origin: 17vw 16vh;
+  box-shadow: -100vmin 0 12.5406084953vmin currentColor;
+}
+.background span:nth-child(9) {
+  color: #253e56;
+  top: 53%;
+  left: 99%;
+  animation-duration: 8s;
+  animation-delay: -10s;
+  transform-origin: 19vw -20vh;
+  box-shadow: -100vmin 0 12.6943265155vmin currentColor;
+}
+
+.hero-bg {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -10;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  background-position: 0%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: linear-gradient(120deg, rgba(10, 10, 13, 0.5490196078), rgba(10, 10, 13, 0.5490196078)), url("../img/DALL·E 2022-12-31 17.49.12 - landscape render of a gold comet falling from space on earth.png");
+  background: radial-gradient(circle at 20% 20%, rgba(0, 150, 255, 0.6), transparent 40%), radial-gradient(circle at 80% 30%, rgba(255, 0, 150, 0.5), transparent 50%), radial-gradient(circle at 50% 80%, rgba(0, 255, 200, 0.4), transparent 40%);
+  background-blend-mode: screen;
+  background-size: 200% 200%;
+  background-color: rgba(0, 0, 0, 0.2509803922);
+  animation: moveGlow 5s infinite ease-in-out;
+  filter: blur(20px);
+  z-index: -1;
 }
 
 nav {
@@ -57,6 +176,7 @@ nav {
   z-index: 100;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 nav .brand .logo {
   display: block;
@@ -72,14 +192,20 @@ nav .brand .menu {
 nav .options a {
   padding: 10px;
   color: #ccc;
-  font-family: "Product Sans";
+}
+
+a {
+  color: inherit;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 .hero {
   font-family: "Product Sans";
   padding: 200px 20px;
   text-align: center;
-  color: #ccc;
+  color: #fff0f0;
 }
 .hero h1 {
   font-size: 5rem;
@@ -91,10 +217,6 @@ section.dark {
   text-align: center;
   margin: 15vh 5vw;
   border-radius: 40px;
-}
-section.dark.bottom-round-corner {
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
 }
 section.dark p {
   padding: 20px 0;
@@ -169,10 +291,15 @@ footer ol {
 }
 footer ul li,
 footer ol li {
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 footer.grid {
   grid-template-columns: repeat(4, 1fr);
+}
+
+h2#sub {
+  margin: 40px 0;
+  font-size: 2.2rem;
 }
 
 /*# sourceMappingURL=main.css.map */

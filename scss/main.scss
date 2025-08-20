@@ -1,9 +1,35 @@
+// ==============================================
+// FONTS & VARIABLES
+// ==============================================
+
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Quicksand:wght@300..700&family=Varela+Round&display=swap');
+
+// Available font families:
+// font-family: "Quicksand", sans-serif;
+// font-family: "Nunito Sans", sans-serif;
+// font-family: "Asap", sans-serif;
+// font-family: "Varela Round", sans-serif;
+
+// Color Variables
+$white: #fff0f0;
+$off-white: #ccc;
+$dark-bg: #0a0a0d;
+$nav-bg: #1e1e1e;
+$purple-bg: #2f0863;
+$blue-accent: #253e56;
+$purple-accent: #292877;
+$yellow-accent: #fec409;
+
+// ==============================================
+// GLOBAL STYLES & RESET
+// ==============================================
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: "Product Sans", "Avenir Roman";
+  font-family: "Varela Round", "Asap", "Nunito Sans", "Quicksand", "Avenir Roman";
   outline: none;
 }
 
@@ -11,13 +37,9 @@ html {
   scroll-behavior: smooth;
 }
 
-a {
-  color: inherit;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
+// ==============================================
+// UTILITY CLASSES
+// ==============================================
 
 .grid {
   display: grid;
@@ -32,25 +54,178 @@ a {
   border-bottom-right-radius: 40px;
 }
 
+// ==============================================
+// ANIMATIONS
+// ==============================================
+
+@keyframes move {
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}
+
+@keyframes moveGlow {
+  0% {
+    background-position: 20% 20%, 80% 30%, 50% 80%;
+  }
+  50% {
+    background-position: 40% 40%, 60% 50%, 70% 70%;
+  }
+  100% {
+    background-position: 30% 60%, 50% 40%, 60% 90%;
+  }
+}
+
+// ==============================================
+// BACKGROUND ELEMENTS
+// ==============================================
+
 .background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: $purple-bg;
+  overflow: hidden;
+  z-index: -1;
+
+  span {
+    width: 50vmin;
+    height: 50vmin;
+    border-radius: 50vmin;
+    backface-visibility: hidden;
+    position: absolute;
+    animation: move linear infinite;
+    animation-duration: 45s;
+
+    // Individual span configurations
+    &:nth-child(0) {
+      color: $blue-accent;
+      top: 87%;
+      left: 64%;
+      animation-duration: 40s;
+      animation-delay: -43s;
+      transform-origin: -11vw 8vh;
+      box-shadow: 100vmin 0 12.812548963296056vmin currentColor;
+    }
+
+    &:nth-child(1) {
+      color: $purple-accent;
+      top: 25%;
+      left: 51%;
+      animation-duration: 22s;
+      animation-delay: -50s;
+      transform-origin: -22vw 2vh;
+      box-shadow: 100vmin 0 13.033054119245877vmin currentColor;
+    }
+
+    &:nth-child(2) {
+      color: $blue-accent;
+      top: 48%;
+      left: 48%;
+      animation-duration: 31s;
+      animation-delay: -43s;
+      transform-origin: -1vw -11vh;
+      box-shadow: -100vmin 0 13.13470525646507vmin currentColor;
+    }
+
+    &:nth-child(3) {
+      color: $purple-accent;
+      top: 13%;
+      left: 76%;
+      animation-duration: 29s;
+      animation-delay: -29s;
+      transform-origin: -21vw 7vh;
+      box-shadow: -100vmin 0 13.089721101034272vmin currentColor;
+    }
+
+    &:nth-child(4) {
+      color: $purple-accent;
+      top: 6%;
+      left: 50%;
+      animation-duration: 12s;
+      animation-delay: -5s;
+      transform-origin: 24vw -5vh;
+      box-shadow: -100vmin 0 13.47331576054838vmin currentColor;
+    }
+
+    &:nth-child(5) {
+      color: $purple-accent;
+      top: 93%;
+      left: 45%;
+      animation-duration: 40s;
+      animation-delay: -44s;
+      transform-origin: 1vw -18vh;
+      box-shadow: 100vmin 0 13.165538216534006vmin currentColor;
+    }
+
+    &:nth-child(6) {
+      color: $purple-accent;
+      top: 74%;
+      left: 10%;
+      animation-duration: 33s;
+      animation-delay: -23s;
+      transform-origin: 1vw 3vh;
+      box-shadow: 100vmin 0 12.781989129803748vmin currentColor;
+    }
+
+    &:nth-child(7) {
+      color: $blue-accent;
+      top: 84%;
+      left: 47%;
+      animation-duration: 29s;
+      animation-delay: -27s;
+      transform-origin: 3vw 24vh;
+      box-shadow: 100vmin 0 12.861361995912544vmin currentColor;
+    }
+
+    &:nth-child(8) {
+      color: $purple-accent;
+      top: 47%;
+      left: 16%;
+      animation-duration: 19s;
+      animation-delay: -32s;
+      transform-origin: 17vw 16vh;
+      box-shadow: -100vmin 0 12.540608495288943vmin currentColor;
+    }
+
+    &:nth-child(9) {
+      color: $blue-accent;
+      top: 53%;
+      left: 99%;
+      animation-duration: 8s;
+      animation-delay: -10s;
+      transform-origin: 19vw -20vh;
+      box-shadow: -100vmin 0 12.694326515544534vmin currentColor;
+    }
+  }
+}
+
+.hero-bg {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -10;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  background-position: 0%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  // background-image: linear-gradient(120deg, #0a0a0d8c, #0a0a0d8c), url("/img/DALL·E\ 2022-12-31\ 17.48.37\ -\ landscape\ render\ of\ a\ gold\ comet\ falling\ from\ space\ on\ earth.png");
-  background-image: linear-gradient(120deg, #0a0a0d8c, #0a0a0d8c), url("../img/DALL·E\ 2022-12-31\ 17.49.12\ -\ landscape\ render\ of\ a\ gold\ comet\ falling\ from\ space\ on\ earth.png");
+  background: radial-gradient(circle at 20% 20%, rgba(0, 150, 255, 0.6), transparent 40%),
+              radial-gradient(circle at 80% 30%, rgba(255, 0, 150, 0.5), transparent 50%),
+              radial-gradient(circle at 50% 80%, rgba(0, 255, 200, 0.4), transparent 40%);
+  background-blend-mode: screen;
+  background-size: 200% 200%;
+  background-color: #00000040;
+  animation: moveGlow 5s infinite ease-in-out;
+  filter: blur(20px);
+  z-index: -1;
 }
+
+// ==============================================
+// NAVIGATION
+// ==============================================
 
 nav {
   padding: 20px;
-  background-color: #1e1e1e;
+  background-color: $nav-bg;
   position: sticky;
   top: 0;
   left: 0;
@@ -58,6 +233,7 @@ nav {
   z-index: 100;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   .brand {
     .logo {
@@ -75,39 +251,51 @@ nav {
     }
   }
 
-  .options {
-    a {
-      padding: 10px;
-      color: #ccc;
-      font-family: "Product Sans";
-    }
+  .options a {
+    padding: 10px;
+    color: $off-white;
   }
 }
+
+// ==============================================
+// LINKS
+// ==============================================
+
+a {
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// ==============================================
+// HERO SECTION
+// ==============================================
 
 .hero {
   font-family: "Product Sans";
   padding: 200px 20px;
   text-align: center;
-  color: #ccc;
+  color: $white;
 
   h1 {
     font-size: 5rem;
   }
 }
 
+// ==============================================
+// SECTIONS
+// ==============================================
 
 section {
+  // Dark themed sections
   &.dark {
-    background-color: #0a0a0d;
-    color: #ccc;
+    background-color: $dark-bg;
+    color: $off-white;
     text-align: center;
     margin: 15vh 5vw;
     border-radius: 40px;
-
-    &.bottom-round-corner {
-      border-bottom-left-radius: 40px;
-      border-bottom-right-radius: 40px;
-    }
 
     p {
       padding: 20px 0;
@@ -119,43 +307,46 @@ section {
       text-transform: uppercase;
     }
 
+    // Grid layout within dark sections
     .grid {
       grid-template-columns: repeat(2, 1fr);
       padding: 50px 5%;
       align-items: center;
       gap: 20px;
 
-      .col {
-        img {
-          width: 100%;
-          border-radius: 20px;
-        }
+      .col img {
+        width: 100%;
+        border-radius: 20px;
       }
     }
 
+    // Download section specific styles
     &.download {
       padding: 20px 20px 30px;
-      h2{
+
+      h2 {
         padding: 20px 0;
       }
+
       .flex {
         justify-content: center;
         align-content: center;
         flex-wrap: wrap;
         align-items: center;
-        a{
+
+        a {
           display: block;
           padding: 20px;
-          svg{
-            path{
-              fill: #fec409;
-            }
+
+          svg path {
+            fill: $yellow-accent;
           }
         }
       }
     }
   }
 
+  // Subscribe section
   &.subscribe {
     form {
       input {
@@ -171,26 +362,26 @@ section {
 
       button {
         font-size: 16px;
-        background-color: #1e1e1e;
+        background-color: $nav-bg;
         padding: 20px;
         margin: 0;
-        color: #ccc;
-        border: #1e1e1e 1px solid;
+        color: $off-white;
+        border: $nav-bg 1px solid;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
-
       }
     }
   }
-
-
 }
 
-footer {
+// ==============================================
+// FOOTER
+// ==============================================
 
+footer {
   padding: 60px 30px;
-  background-color: #0a0a0d;
-  color: #ccc;
+  background-color: $dark-bg;
+  color: $off-white;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
 
@@ -201,11 +392,20 @@ footer {
     list-style-image: none;
 
     li {
-      padding: 10px 0px;
+      padding: 10px 0;
     }
   }
 
   &.grid {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+// ==============================================
+// SPECIFIC ELEMENTS
+// ==============================================
+
+h2#sub {
+  margin: 40px 0;
+  font-size: 2.2rem;
 }
