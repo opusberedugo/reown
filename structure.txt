@@ -1,0 +1,17 @@
+C:\USERS\HP\DOCUMENTS\PROJECTS\WORK\REOWN
+├─/node_modules
+├─/public
+|   └──index.html
+|   └──demo.html
+|   └─\css
+|   | └──main.css
+|   | └──main.css.map    
+|   ├─\img
+|   └─\scss
+|   | └──main.scss
+├.firebaserc
+├database.rules.json
+├firestore.json
+├firestore.indexes.json
+├firestore.rules
+├package.json
