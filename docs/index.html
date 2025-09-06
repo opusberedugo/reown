@@ -5,12 +5,17 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vidmine &mdash; Coming Soon</title>
+  <title>Reown &mdash; Your pre-loved and unused items deserve a new life.</title>
   <link rel="stylesheet" href="./fonts/avenir-cufonfonts-webfont/style.css" />
   <link rel="stykesheet" href="./fonts/product-sans-cufonfonts-webfont/style.css" />
   <link rel="stylesheet" href="./css/main.css">
   <style>
     /* Mobile menu overlay styles */
+    @media (min-width: 769px) {
+      .mobile-menu{
+        display: none;
+      }
+    }
     @media (max-width: 768px) {
       .mobile-menu {
         position: fixed;
@@ -77,10 +82,10 @@
 
   <nav>
     <div class="brand">
+      <button class="menu" onclick="toggleMobileMenu()"></button>
       <a class="logo">
         <img src="./img/logo.png" />
       </a>
-      <button class="menu" onclick="toggleMobileMenu()"></button>
     </div>
 
     <div class="options">
@@ -170,7 +175,8 @@
 
   <footer class="">
     <div>
-      Reown — giving unused items a second chance.
+      Reown is simple and trusted, helping you declutter while empowering others and promoting sustainability.
+Use this instead
     </div>
 
     <div>
