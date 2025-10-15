@@ -8,6 +8,7 @@
   <title>Reown &mdash; Your pre-loved and unused items deserve a new life.</title>
   <link rel="stylesheet" href="./fonts/avenir-cufonfonts-webfont/style.css" />
   <link rel="stykesheet" href="./fonts/product-sans-cufonfonts-webfont/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert/dist/sweetalert.css">
   <link rel="stylesheet" href="./css/main.css">
   <style>
     /* Mobile menu overlay styles */
@@ -82,7 +83,7 @@
 
   <nav>
     <div class="brand">
-      <button class="menu" onclick="toggleMobileMenu()"></button>
+      <button title="menu" type="button" class="menu" onclick="toggleMobileMenu()"></button>
       <a class="logo">
         <img src="./img/logo.png" />
       </a>
@@ -235,5 +236,7 @@ Use this instead
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert/dist/sweetalert.min.js"></script>
+<script src="./js/form.js"></script>
 </body>
 </html>
