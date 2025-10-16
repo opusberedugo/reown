@@ -1,14 +1,12 @@
-// Configuration
-const FORM_SUBMIT_EMAIL = 'anengib@yahoo.com'; // Change this to your email
-const FORM_SUBMIT_URL = `https://formsubmit.co/${FORM_SUBMIT_EMAIL}`;
+// Import Firestore
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-// Get form elements
+// Get Firestore instance (assuming 'app' is already initialized in your HTML)
+const db = getFirestore(window.app);
+
+// Get form element
 const form = document.querySelector('form[action="subscribe"]');
 const emailInput = document.getElementById('email-input');
-const submitButton = form.querySelector('button');
-
-// Email validation regex
-const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 // Handle form submission
 form.addEventListener('submit', async (e) => {
@@ -16,72 +14,45 @@ form.addEventListener('submit', async (e) => {
   
   const email = emailInput.value.trim();
   
-  // Validate email
-  if (!email) {
-    Swal.fire({
-      icon: 'warning',
-      title: 'Email Required',
-      text: 'Please enter your email address',
-      confirmButtonColor: '#1e1e1e'
-    });
-    emailInput.focus();
+  // Basic email validation
+  if (!email || !isValidEmail(email)) {
+    swal("Invalid Email", "Please enter a valid email address.", "error");
     return;
   }
   
-  if (!emailRegex.test(email)) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Invalid Email',
-      text: 'Please enter a valid email address',
-      confirmButtonColor: '#1e1e1e'
-    });
-    emailInput.focus();
-    return;
-  }
-  
-  // Disable button and show loading state
-  submitButton.disabled = true;
-  submitButton.textContent = 'Subscribing...';
+  // Disable submit button to prevent double submission
+  const submitBtn = form.querySelector('button');
+  const originalText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Subscribing...';
   
   try {
-    const response = await fetch(FORM_SUBMIT_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        email: email,
-        subject: 'New Reown Waitlist Signup',
-        message: `New waitlist signup from: ${email}`,
-        _captcha: 'false'
-      })
+    // Add document to Firestore
+    await addDoc(collection(db, "subscribers"), {
+      email: email,
+      subscribedAt: serverTimestamp(),
+      status: "pending"
     });
     
-    if (response.ok) {
-      // Success
-      Swal.fire({
-        icon: 'success',
-        title: 'Welcome to Reown!',
-        text: 'Thank you for joining our waitlist. You\'ll be among the first to know when we launch!',
-        confirmButtonColor: '#1e1e1e',
-        confirmButtonText: 'Got it!'
-      });
-      emailInput.value = '';
-    } else {
-      throw new Error('Submission failed');
-    }
+    // Success message
+    swal("Success!", "You've been added to the waitlist. We'll notify you when we launch!", "success");
+    
+    // Clear form
+    emailInput.value = '';
+    
   } catch (error) {
-    console.error('Error:', error);
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Something went wrong. Please try again later.',
-      confirmButtonColor: '#1e1e1e'
-    });
+    console.error("Error adding subscriber:", error);
+    swal("Oops!", "Something went wrong. Please try again later.", "error");
   } finally {
-    // Re-enable button
-    submitButton.disabled = false;
-    submitButton.textContent = 'Subscribe';
+    // Re-enable submit button
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
   }
 });
+
+// Email validation helper
+function isValidEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+// const emailRegex = 
