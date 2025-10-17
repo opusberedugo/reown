@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REOWN - Email Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">REOWN</div>
+            <div class="subtitle">Email Campaign Dashboard</div>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="testers-count">0</div>
+                <div class="stat-label">Testers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="subscribers-count">0</div>
+                <div class="stat-label">Subscribers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="customers-count">0</div>
+                <div class="stat-label">Customers</div>
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <div class="card">
+                <div class="card-title">Recipients</div>
+                <div class="recipient-group">
+                    <button class="recipient-btn" data-group="testers">
+                        <strong>Testers</strong>
+                        <span class="recipient-count" id="testers-desc">Beta testers and early adopters</span>
+                    </button>
+                    <button class="recipient-btn" data-group="subscribers">
+                        <strong>Subscribers</strong>
+                        <span class="recipient-count" id="subscribers-desc">Newsletter subscribers</span>
+                    </button>
+                    <button class="recipient-btn" data-group="customers">
+                        <strong>Customers</strong>
+                        <span class="recipient-count" id="customers-desc">Paying customers</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Compose Message</div>
+                <form id="email-form">
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" placeholder="Enter email subject..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Compose your message here... Use {{link:https://example.com|Click Here}} to add styled links." required></textarea>
+                        <div class="info-text">
+                            💡 Add links using: {{link:URL|Link Text}}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="send-btn">
+                        Send Email
+                    </button>
+                </form>
+
+                <div class="loading" id="loading">
+                    Sending emails...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="./js/admin.js"></script>
+</body>
+</html>
